@@ -5,9 +5,12 @@ package com.example.mvc_205.service;
 
 import java.util.ArrayList;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.example.mvc_205.model.Order;
+import com.example.mvc_205.model.Orders;
+//import com.example.mvc_205.repository.OrderRepository;
+import com.example.mvc_205.repository.OrderRepository;
 
 /**
  * @author bjit
@@ -15,9 +18,12 @@ import com.example.mvc_205.model.Order;
  */
 @Service
 public class OrderService {
-	ArrayList<Order> orderList = new ArrayList<Order>();
+	ArrayList<Orders> orderList = new ArrayList<Orders>();
 	
-	public ArrayList<Order> addOrder(Order order)
+	@Autowired
+	private OrderRepository orderRepository;
+	
+	public ArrayList<Orders> addOrder(Orders order)
 	{		
 		orderList.add(order);
 		return orderList;
@@ -25,13 +31,16 @@ public class OrderService {
 	}
 	
 	
-	public ArrayList<Order> getAllOrders()
+	public ArrayList<Orders> getAllOrders()
 	{		
 		if (orderList.size()<1) {
-			Order order = new Order(1L,"FirstOrder",100);
+			Orders order = new Orders("FirstOrder","100");
 			orderList.add(order);
 			
 		}
+		
+		Boolean isTrue = orderRepository.existsById(1L);
+		System.out.println("Id Exist");
 		return orderList;
 		
 	}

@@ -20,7 +20,7 @@ public class HelloController {
 	private OrderService orderSrvice;
 	
 	@GetMapping("/order")
-	public List<Order> getOrder()
+	public List<Orders> getOrder()
 	{			
 		return orderSrvice.getAllOrders();
 	}
@@ -35,14 +35,14 @@ public class HelloController {
 	}
 	
 	@PutMapping("/order/{id}")
-	public List<Order> updateOrder(@RequestBody Order order, @PathVariable Long id)
+	public List<Orders> updateOrder(@RequestBody Orders order, @PathVariable Long id)
 	{
-		order.setId(id);
+	
 		return orderSrvice.addOrder(order);
 	}
 	
 	@PostMapping("/order")
-	public List<Order> PostOrder(@RequestBody Order newOrder)
+	public List<Orders> PostOrder(@RequestBody Orders newOrder)
 	{
 		return orderSrvice.addOrder(newOrder);
 	}
