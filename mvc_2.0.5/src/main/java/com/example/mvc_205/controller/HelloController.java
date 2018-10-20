@@ -1,4 +1,4 @@
-package com.example.mvc_205;
+package com.example.mvc_205.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,12 +23,7 @@ public class HelloController {
 	}
 	
 	
-	@GetMapping("/hello2")
-	public String hello2()
-	{
-				
-		return "Hello world";
-	}
+
 	
 	@DeleteMapping("/order")
 	public List<Order> deleteOrder()
